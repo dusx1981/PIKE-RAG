@@ -14,7 +14,7 @@ experiment_name: chunking
 # Input Document & Output Dir Setting
 ################################################################################
 input_doc_setting:
-  doc_dir: /home/dusx/projects/PIKE-RAG/data/biology/contents
+  doc_dir: data/test/contents
 
 output_doc_setting:
   doc_dir: data/biology/chunks

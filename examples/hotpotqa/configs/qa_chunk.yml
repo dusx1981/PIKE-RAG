@@ -87,9 +87,9 @@ retriever:
           atom_tag: atom_questions
 
       embedding_setting:
-        module_path: pikerag.llm_client.azure_open_ai_client
-        class_name: AzureOpenAIEmbedding
-        args: {}
+        module_path: pikerag.llm_client.standard_openai_api
+        class_name: StandardOpenAIEmbedding
+        args: {model: text-embedding-v3}
 
 
 # Evaluator Setting
