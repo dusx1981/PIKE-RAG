@@ -40,11 +40,11 @@ tagger:
 ################################################################################
 llm_client:
   module_path: pikerag.llm_client
-  class_name: AzureOpenAIClient
+  class_name: StandardOpenAIClient
   args: {}
 
   llm_config:
-    model: gpt-4
+    model: qwen2.5-72b-instruct
     temperature: 0.7
 
   cache_config:

@@ -31,6 +31,8 @@ test_loading:
   module: biology.utils
   name: load_testing_suite
   args:
+    # path: cais/mmlu
+    # name: college_biology
     path: /home/dusx/projects/PIKE-RAG/examples/test/
     name: test.jsonl
 

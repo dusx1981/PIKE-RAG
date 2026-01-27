@@ -46,12 +46,12 @@ qa_protocol:
 llm_client:
   module_path: pikerag.llm_client
   # available class_name: AzureMetaLlamaClient, AzureOpenAIClient, HFMetaLlamaClient
-  class_name: AzureOpenAIClient
+  class_name: StandardOpenAIClient
   args: {}
 
   llm_config:
-    model: gpt-4
-    temperature: 0
+    model: qwen2.5-72b-instruct
+    temperature: 0.7
 
   cache_config:
     # location_prefix: will be joined with log_dir to generate the full path;
@@ -90,11 +90,20 @@ retriever:
           filepath: data/two_wiki/dev_500_retrieval_contexts_as_chunks_with_atom_questions.jsonl
           atom_tag: atom_questions
 
-      embedding_setting:
-        module_path: pikerag.llm_client.azure_open_ai_client
-        class_name: AzureOpenAIEmbedding
-        args: {}
+      # embedding_setting:
+      #   # module_path: pikerag.llm_client.azure_open_ai_client
+      #   module_path: pikerag.llm_client.azure_open_ai_client
+      #   class_name: AzureOpenAIEmbedding
+      #   args: {}
 
+      embedding_setting:
+        args:
+          # 关键变更：model_name 直接使用你的本地路径
+          model_name: "/home/dusx/projects/models/text2vec-large-chinese"
+          model_kwargs:
+            device: "cuda:0"  # 假设你希望使用GPU加速
+          encode_kwargs:
+            normalize_embeddings: True
 
 # Evaluator Setting
 ################################################################################

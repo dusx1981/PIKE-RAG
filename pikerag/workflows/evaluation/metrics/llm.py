@@ -3,7 +3,7 @@
 
 from typing import Tuple
 
-from pikerag.llm_client import AzureOpenAIClient
+from pikerag.llm_client import StandardOpenAIClient
 from pikerag.prompts import BaseContentParser, CommunicationProtocol, MessageTemplate
 from pikerag.utils.logger import Logger
 from pikerag.workflows.common import GenerationQaData
@@ -66,13 +66,13 @@ class LLM(BaseMetric):
     def __init__(self, num_rounds: int, num_data: int, main_logger: Logger = None, **kwargs) -> None:
         super().__init__(num_rounds, num_data, main_logger, **kwargs)
 
-        self._client: AzureOpenAIClient = AzureOpenAIClient(
+        self._client: StandardOpenAIClient = StandardOpenAIClient(
             # TODO: enable kwargs for Metric initialization.
             location=kwargs.get("cache_location", None),
         )
         self._llm_config = {
-            "model": kwargs.get("model", "gpt-4"),
-            "temperature": kwargs.get("temperature", 0),
+            "model": kwargs.get("model", "qwen2.5-72b-instruct"),
+            "temperature": kwargs.get("temperature", 0.6),
         }
 
     def _scoring_generation_qa(self, qa: GenerationQaData) -> float:
