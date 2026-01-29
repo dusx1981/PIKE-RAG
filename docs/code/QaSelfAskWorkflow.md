@@ -38,6 +38,8 @@ while 需要跟进问题:
 ```
 
 ### 模板结构：
+![frame](../images/frame.png)
+
 ```python
 Few-shot 示例:
 Question: {原始问题}
